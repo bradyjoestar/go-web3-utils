@@ -30,17 +30,17 @@ func main() {
 	blockNumber, err := client.EthBlockNumber()
 	fmt.Println(blockNumber)
 
-	for i := blockNumber; i < blockNumber-3; i-- {
+	for i := blockNumber; i > blockNumber-3; i-- {
 		blocks, _ := client.EthGetBlockByNumber(i, true)
 		fmt.Println("===============block Number================================")
 		fmt.Println(blocks.Hash)
 		fmt.Println(blocks.Number)
 		fmt.Println(blocks.Timestamp)
 		fmt.Println("---------------transaction details-------------------------")
-		fmt.Println(blocks.Transactions[0].Hash)
-		fmt.Println(blocks.Transactions[0].From)
-		fmt.Println(blocks.Transactions[0].To)
-		fmt.Println(blocks.Transactions[0].Input)
+		fmt.Println("hash: " + blocks.Transactions[0].Hash)
+		fmt.Println("from: " + blocks.Transactions[0].From)
+		fmt.Println("to: " + blocks.Transactions[0].To)
+		fmt.Println("data: " + blocks.Transactions[0].Input)
 		fmt.Println(blocks.Transactions[0].Nonce)
 	}
 
