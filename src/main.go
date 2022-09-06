@@ -29,4 +29,7 @@ func main() {
 		panic(err.Error())
 	}
 	fmt.Println(tx)
+	fmt.Println("from" + tx.From)
+	fmt.Println("to" + tx.To)
+	fmt.Println("input data" + tx.Input)
 }
