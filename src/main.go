@@ -20,10 +20,6 @@ func main() {
 	}
 	fmt.Println(version)
 
-	if len(os.Args) != 2 {
-		panic("txhash should be provided")
-	}
-
 	//
 	//fmt.Println("--------------------getTransction        --------------------------")
 	//getTransaction(os.Args[1])
