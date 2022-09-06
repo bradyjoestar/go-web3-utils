@@ -11,8 +11,6 @@ import (
 func main() {
 	fmt.Println("wenbin test")
 
-	fmt.Println(os.Args[1])
-
 	client := ethrpc.New("http://127.0.0.1:8545")
 	version, err := client.Web3ClientVersion()
 	if err != nil {
