@@ -24,12 +24,13 @@ func main() {
 		panic("txhash should be provided")
 	}
 
-	fmt.Println("--------------------getTransction        --------------------------")
-	getTransaction(os.Args[1])
-
-	fmt.Println("\n\n\n\n\n")
-	fmt.Println("--------------------getTransactionReceipt--------------------------")
-	getTransactionReceipt(os.Args[1])
+	//
+	//fmt.Println("--------------------getTransction        --------------------------")
+	//getTransaction(os.Args[1])
+	//
+	//fmt.Println("\n\n\n\n\n")
+	//fmt.Println("--------------------getTransactionReceipt--------------------------")
+	//getTransactionReceipt(os.Args[1])
 
 	fmt.Println("----------------getLastesBlocks-------------------------------------")
 	blockNumber, err := client.EthBlockNumber()
