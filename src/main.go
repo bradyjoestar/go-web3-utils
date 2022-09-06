@@ -21,7 +21,7 @@ func main() {
 	//getTransactionReceipt(os.Args[1])
 
 	fmt.Println("----------------getLastesBlocks-------------------------------------")
-	blockNumber, err := client.EthBlockNumber()
+	blockNumber, _ := client.EthBlockNumber()
 	fmt.Println(blockNumber)
 
 	for i := blockNumber; i > blockNumber-3; i-- {
