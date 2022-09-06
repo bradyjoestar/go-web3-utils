@@ -5,15 +5,15 @@ import (
 	"github.com/onrik/ethrpc"
 	"log"
 	"os"
+	"strconv"
 )
 
 func main() {
 	fmt.Println("wenbin test")
 
-	client := ethrpc.New("http://127.0.0.1:8545")
-
 	fmt.Println(os.Args[1])
 
+	client := ethrpc.New("http://127.0.0.1:8545")
 	version, err := client.Web3ClientVersion()
 	if err != nil {
 		log.Fatal(err)
@@ -24,12 +24,42 @@ func main() {
 		panic("txhash should be provided")
 	}
 
+	fmt.Println("--------------------getTransction--------------------------")
+	getTransaction(os.Args[1])
+
+	fmt.Println("--------------------getTransactionReceipt--------------------------")
+	getTransactionReceipt(os.Args[1])
+
+}
+
+func getTransaction(args string) {
+	client := ethrpc.New("http://127.0.0.1:8545")
+
 	tx, err := client.EthGetTransactionByHash(os.Args[1])
 	if err != nil {
 		panic(err.Error())
 	}
-	fmt.Println(tx)
+
 	fmt.Println("from: " + tx.From)
 	fmt.Println("to: " + tx.To)
+	fmt.Println("nonce: " + strconv.Itoa(tx.Nonce))
+	fmt.Println("txHash: " + tx.Hash)
 	fmt.Println("input data: " + tx.Input)
+}
+
+func getTransactionReceipt(args string) {
+	client := ethrpc.New("http://127.0.0.1:8545")
+
+	receipt, err := client.EthGetTransactionReceipt(args)
+	if err != nil {
+		panic(err.Error())
+	}
+	fmt.Println(receipt)
+	fmt.Println("hash: " + receipt.TransactionHash)
+	fmt.Println("status: " + receipt.Status)
+	fmt.Println("contract address: " + receipt.ContractAddress)
+	for _, v := range receipt.Logs {
+		fmt.Println("logs: ")
+		fmt.Println(v)
+	}
 }
