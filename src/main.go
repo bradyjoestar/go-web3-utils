@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"github.com/onrik/ethrpc"
-	"log"
 	"os"
 	"strconv"
 )
@@ -12,11 +11,6 @@ func main() {
 	fmt.Println("wenbin test")
 
 	client := ethrpc.New("http://127.0.0.1:8545")
-	version, err := client.Web3ClientVersion()
-	if err != nil {
-		log.Fatal(err)
-	}
-	fmt.Println(version)
 
 	//
 	//fmt.Println("--------------------getTransction        --------------------------")
